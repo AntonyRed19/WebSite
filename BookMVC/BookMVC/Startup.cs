@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookMVC.Services;
+using BookMVC.Services.Abstraction;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,9 +15,11 @@ namespace BookMVC
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IBookManageService _bookManageService;
+        public Startup(IConfiguration configuration, IBookManageService bookManageService)
         {
             Configuration = configuration;
+            _bookManageService = bookManageService;
         }
 
         public IConfiguration Configuration { get; }
